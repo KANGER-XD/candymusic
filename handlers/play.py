@@ -128,13 +128,13 @@ async def playlist(client, message):
         return
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text("❌ **no music is currently playing**")
+        await message.reply_text("🙂 **no music is currently playing**")
     temp = []
     for t in queue:
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style="md")
-    msg = "💡 **now playing** on {}".format(message.chat.title)
+    msg = "🚀 **now playing** on {}".format(message.chat.title)
     msg += "\n\n• " + now_playing
     msg += "\n• Req By " + by
     temp.pop(0)
@@ -474,7 +474,7 @@ async def m_cb(b, cb):
             )
 
 
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["ytplay", f"ytplay@{BOT_USERNAME}"]) & other_filters)
 async def play(_, message: Message):
     
     bttn = InlineKeyboardMarkup(
@@ -654,7 +654,7 @@ async def play(_, message: Message):
             toxxt = "\n"
             j = 0
             user = user_name
-            emojilist = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"]
+            emojilist = ["1", "2", "3", "4", "5"]
             while j < 5:
                 toxxt += f"{emojilist[j]} [{results[j]['title'][:25]}...](https://youtube.com{results[j]['url_suffix']})\n"
                 toxxt += f" ├ 💡 **Duration** - `{results[j]['duration']}`\n"
@@ -891,7 +891,7 @@ async def lol_cb(b, cb):
         os.remove("final.png")
 
 
-@Client.on_message(command(["ytp", f"ytp@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 async def ytplay(_, message: Message):
     
     bttn = InlineKeyboardMarkup(
